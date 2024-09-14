@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{csquotes} 
+\usepackage{amssymb}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\newtheorem{lemma}{Lemma}
+\addbibresource{references.bib}
+\setlength{\parindent}{0pt}
+
+\title{Applying the Well-Ordering Principle: Integer Intervals for Real Numbers}
+\author{Simon Gustafsson}
+\date{14th of September 2024}
+
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+This proof addresses **Exercise 1.122** from the textbook *Don't Panic: A Guide to MATA21 Analysis in One Variable* \cite[pg. 41]{dontpanic}.
+
+\section*{Problem Statement}
+
+\textbf{Assumptions:} Let \( x \in [0, \infty) \) and \( n \in \mathbb{Z} \). \\
+\textbf{Statement:} For every \( x \), there exists an \( n \) such that \( x \in [n, n+1) \).
+
+\section*{The Well-Ordering Principle}
+\begin{lemma}
+Every non-empty subset of the natural numbers \( \mathbb{N} \) has a least element \cite[pg. 41]{dontpanic}.
+\end{lemma}
+
+\section*{Archimedean Property}
+The Archimedean Property states that for any real number \( x \in \mathbb{R} \), there exists a natural number \( n \in \mathbb{N} \) such that \( n > x \) \cite[pg. 38]{dontpanic}.
+
+\section*{Proof}
+
+Since \( x \geq 0 \), any integer \( k \) that satisfies \( k > x \) must be positive or zero. Therefore, we restrict \( k \) to be in \( \mathbb{N} \), the set of natural numbers. Now, consider the set
+\[
+S = \{ k \in \mathbb{N} \mid k > x \}.
+\]
+\vspace{-0.5\baselineskip}
+
+By the Archimedean Property (see previous section), for any real number \( y \geq 0 \), there exists a natural number \( m \in \mathbb{N} \) such that \( m > y \). Therefore, the set \( S \) is non-empty. Since \( S \) is a non-empty subset of \( \mathbb{N} \), the Well-Ordering Principle guarantees the existence of a least element. Denote this smallest element by \( k_0 \). By the definition of \( S \), we know that
+\[
+k_0 > x.
+\]
+\vspace{-0.5\baselineskip}
+
+Since \( k_0 \) is the smallest natural number such that \( k_0 > x \), it follows that \( k_0 - 1 \) cannot be greater than \( x \). If \( k_0 - 1 > x \), then \( k_0 - 1 \) would also belong to the set \( S \), contradicting the fact that \( k_0 \) is the smallest element of \( S \). Thus, we conclude that
+\[
+    k_0 - 1 \leq x.
+\]
+\vspace{-0.5\baselineskip}
+
+Now let
+\[
+n = k_0 - 1.
+\]
+\vspace{-0.5\baselineskip}
+
+From the previous steps, we know that \( k_0 > x \) and \( k_0 - 1 \leq x \), therefore
+\[
+n \leq x < n + 1.
+\]
+\vspace{-0.5\baselineskip}
+
+Thus, for every \( x \geq 0 \), there exists an integer \( n \in \mathbb{N} \) such that \( n \leq x < n + 1 \). Since \( \mathbb{N} \subseteq \mathbb{Z} \), we can conclude that for every \( x \geq 0 \), there exists an integer \( n \in \mathbb{Z} \) such that \( x \in [n, n+1) \), as required.
+
+\printbibliography
+\end{document}
