@@ -1,0 +1,304 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\newtheorem{lemma}{Lemma}
+\addbibresource{references.bib}
+\setlength{\parindent}{0pt}
+
+\title{Summary}
+\author{Simon Gustafsson}
+\date{12th of January 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Trigonometry}
+
+\[
+1+\tan^{2}x = \frac{1}{\cos^{2}x} \Longleftrightarrow \frac{1}{\cos^{2}x} - 1 = \tan^{2}x
+\]
+
+\[
+\cos^{2}x = \frac{1+\cos(2x)}{2} \Longrightarrow \cos\frac{x}{2} = \pm \sqrt{\frac{1+\cos x}{2}}
+\]
+
+\[
+\sin^{2}x = \frac{1-\cos(2x)}{2} \Longrightarrow \sin\frac{x}{2} = \pm \sqrt{\frac{1-\cos x}{2}}
+\]
+
+\[
+\sin x \leqslant x \leqslant \tan x
+\]
+
+\[
+\frac{x-1}{x} \leqslant \ln x \leqslant x-1
+\]
+
+\section{Sequences}
+
+\[
+\sum_{k=0}^{n} x^{k} = \frac{1}{1-x} - \frac{x^{n+1}}{1-x}
+\]
+
+Converges absolutely: $\Bigl|a_{n}\Bigl|$ converges $\Longrightarrow a_{n}$ converges.
+
+Converges conditionally: $a_{n}$ converges, but not $\Bigl|a_{n}\Bigl|$.
+
+\subsection{Sum Convergence Tests}
+
+\subsubsection{Divergence Test}
+
+If $\lim_{n\rightarrow\infty} a_{n} \neq 0$, then $\sum_{n=1}^{\infty} a_{n}$ diverges.
+
+\subsubsection{Comparison Test}
+
+If $\forall n \in \mathbb{N}, a_{n} > 0$ and $b_{n} > 0$, and $a_{n} > b_{n}$ for all $n \in \mathbb{N}$:
+\[
+\sum_{k=1}^{\infty} a_{k} < \infty \Longrightarrow \sum_{k=1}^{\infty} b_{k} < \infty,
+\]
+\[
+\sum_{k=1}^{\infty} b_{k} = \infty \Longrightarrow \sum_{k=1}^{\infty} a_{k} = \infty.
+\]
+
+\subsubsection{Alternating Series Test}
+
+If $\forall p \in \mathbb{N}$, $a_{2p} > 0$ and $a_{2p-1} < 0$ (or vice versa), and $|a_{n}|$ is decreasing, then $\sum_{k=1}^{\infty} a_{k}$ converges.
+
+\subsubsection{Limit Comparison Test}
+
+If 
+\[
+\lim_{n\rightarrow\infty} \frac{a_{n}}{b_{n}} \in (0, \infty),
+\]
+then:
+\[
+\sum_{k=1}^{\infty} a_{k} < \infty \Longleftrightarrow \sum_{k=1}^{\infty} b_{k} < \infty,
+\]
+\[
+\sum_{k=1}^{\infty} a_{k} = \infty \Longleftrightarrow \sum_{k=1}^{\infty} b_{k} = \infty.
+\]
+
+\subsubsection{Root Test}
+
+Let $\lim_{n\rightarrow\infty} \sqrt[n]{a_{n}} = p$:
+\[
+p < 1 \Longrightarrow \sum_{k=1}^{\infty} a_{k} < \infty,
+\]
+\[
+p > 1 \Longrightarrow \sum_{k=1}^{\infty} a_{k} = \infty.
+\]
+
+\subsubsection{Integral Test}
+
+\[
+\int_{a}^{\infty} f(x)\mathrm{d}x < \infty \Longleftrightarrow \sum_{k=A>a}^{\infty} f(k) < \infty.
+\]
+
+\section{Integral}
+
+\[
+\int f'(g(x))g'(x)\mathrm{d}x = f(g(x))
+\]
+
+\[
+\int f(x)g(x)\mathrm{d}x = F(x)g(x) - \int F(x)g'(x)\mathrm{d}x
+\]
+
+\[
+\int f(g(x))\mathrm{d}x = \int \frac{1}{g'(x)}f(u)\mathrm{d}u
+\]
+
+\[
+g'(x)\mathrm{d}x = \mathrm{d}(g(x))
+\]
+
+---
+
+- Arc length of \(f(x)\) on \([a,b]\): 
+\[
+\int_{a}^{b} \sqrt{1 + f'(x)^2} \mathrm{d}x
+\]
+
+- Volume of rotation of \(f(x)\) around the x-axis on \([a,b]\):
+\[
+\int_{a}^{b} \pi [f(x)]^2 \mathrm{d}x
+\]
+
+- Surface area of the rotated volume:
+\[
+\int_{a}^{b} 2\pi f(x) \sqrt{1 + f'(x)^2} \mathrm{d}x
+\]
+
+---
+
+1. **If the integral contains \(a-x^2\):**
+   Use \(x = \sqrt{a}\sin u\), where \(\mathrm{d}x = \sqrt{a}\cos u \, \mathrm{d}u\),  
+   or \(x = \sqrt{a}\cos u\), where \(\mathrm{d}x = -\sqrt{a}\sin u \, \mathrm{d}u\).
+
+2. **If the integral contains \(a+x^2\):**
+   Use \(x = \sqrt{a}\tan u\), where \(\mathrm{d}x = \frac{\sqrt{a}}{\cos^2 u} \, \mathrm{d}u\).
+
+3. **If the integral contains \(x^2 - a\):**
+   Use \(x = \sqrt{a}\sec u\), where \(\mathrm{d}x = \sqrt{a}\sec u \tan u \, \mathrm{d}u\).
+
+---
+
+Common Integrals Table:
+
+\begin{table}[!h]
+\renewcommand{\arraystretch}{1.5}
+\centering
+\begin{tabular}{|p{0.50\textwidth}|p{0.50\textwidth}|}
+\hline
+\textbf{Function} & \textbf{Integral} \\
+\hline
+\(\frac{1}{x^2+1}\) & \(\arctan x\) \\
+\hline
+\(\frac{1}{x^2-1}\) & \(\frac{1}{2} \ln\Bigl|\frac{x-1}{x+1}\Bigl|\) \\
+\hline
+\(\frac{x}{x^2+c}\) & \(\frac{1}{2} \ln|x^2+c|\) \\
+\hline
+\(\frac{1}{\sin x}\) & \(\ln\Bigl|\tan\frac{x}{2}\Bigl|\) \\
+\hline
+\(\frac{1}{\cos x}\) & \(-\ln\Bigl|\tan\frac{1}{2}\left(x-\frac{\pi}{2}\right)\Bigl|\) \\
+\hline
+\(\arcsin x\) & \(x \arcsin x + \sqrt{1-x^2}\) \\
+\hline
+\(\arccos x\) & \(x \arccos x - \sqrt{1-x^2}\) \\
+\hline
+\(\ln x\) & \(x(\ln x - 1)\) \\
+\hline
+\(\tan x\) & \(-\ln|\cos x|\) \\
+\hline
+\(\cot x\) & \(\ln|\sin x|\) \\
+\hline
+\(\sin^2 x\) & \(\frac{x}{2} - \frac{\sin(2x)}{4}\) \\
+\hline
+\(\cos^2 x\) & \(\frac{x}{2} + \frac{\sin(2x)}{4}\) \\
+\hline
+\(e^x \sin x\) & \(\frac{e^x}{2} (\sin x - \cos x)\) \\
+\hline
+\(e^x \cos x\) & \(\frac{e^x}{2} (\sin x + \cos x)\) \\
+\hline
+\(x e^{kx}\) & \(\frac{e^{kx}}{k} \left(x - \frac{1}{k}\right)\) \\
+\hline
+\end{tabular}
+\caption{Common integrals for reference.}
+\end{table}
+
+---
+
+This section fully incorporates all the key integrals, substitutions, and formulas from your original text.
+
+\section{Integrals and Substitution Rules}
+
+\[
+\int f'(g(x))g'(x)\mathrm{d}x = f(g(x))
+\]
+
+\[
+\int f'(x)g(x)\mathrm{d}x = f(x)g(x) - \int f(x)g'(x)\mathrm{d}x
+\]
+
+\[
+\int f(g(x))\mathrm{d}x = \int \frac{1}{g'(x)}f(u)\mathrm{d}u
+\]
+
+Arc length of $f$ on $[a, b]$:
+\[
+\int_{a}^{b} \sqrt{1 + f'(x)^2} \mathrm{d}x
+\]
+
+Rotation volume of $f$ on $[a, b]$:
+\[
+\int_{a}^{b} \pi f(x)^2 \mathrm{d}x
+\]
+
+\subsection{Trigonometric Substitutions}
+
+If the integral contains $a-x^2$, use $x = \sqrt{a}\sin u$ or $x = \sqrt{a}\cos u$.
+
+If the integral contains $a+x^2$, use $x = \sqrt{a}\tan u$.
+
+If the integral contains $x^2 - a$, use $x = \sqrt{a}\sec u$.
+
+\section{Differential Equations}
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{8pt}
+\centering
+\begin{tabular}{|p{0.45\textwidth}|p{0.45\textwidth}|}
+\hline 
+\textbf{Equation} & \textbf{Solution} \\
+\hline 
+\multirow{3}{*}{$y'' + py' + qy = 0$} & Let $r_1, r_2$ be roots of the quadratic: $r^2 + pr + q = 0$. \\ 
+& \[
+y = \begin{cases} 
+Ae^{r_1x} + Be^{r_2x}, & \text{if } r_1 \neq r_2 \\
+e^{rx}(A + Bx), & \text{if } r_1 = r_2 = r
+\end{cases}
+\] \\
+\hline 
+\multirow{2}{*}{$y' + f(x)y = g(x)$} & \[
+y = \frac{1}{e^{F(x)}} \left(\int e^{F(x)} g(x) \, \mathrm{d}x + C\right),
+\]
+where $F(x) = \int f(x) \, \mathrm{d}x$ \\
+\hline
+\end{tabular}
+\caption{Common forms and solutions for differential equations.}
+\end{table}
+
+\section{Taylor Series}
+
+The Taylor series expansion of a function \(f(x)\), centered at \(x = 0\), is given by:
+\[
+T_N(x) = \sum_{k=0}^N \frac{f^{(k)}(0)}{k!}x^k.
+\]
+
+\begin{table}[!h]
+\renewcommand{\arraystretch}{1.5}
+\centering
+\begin{tabular}{|p{0.50\textwidth}|p{0.50\textwidth}|}
+\hline 
+\textbf{\(f(x)\)} & \textbf{\(T_N(x)\)} centered at \(x=0\) \\
+\hline 
+\(\displaystyle e^x\) & \(\displaystyle 1 + x + \frac{x^2}{2} + \dots = \sum_{k=0}^N \frac{x^k}{k!}\) \\
+\hline 
+\(\displaystyle \ln(1+x)\) & \(\displaystyle x - \frac{x^2}{2} + \frac{x^3}{3} + \dots = \sum_{k=1}^N \frac{(-1)^{k+1} x^k}{k}\) \\
+\hline 
+\(\displaystyle \sin x\) & \(\displaystyle x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots = \sum_{k=0}^N (-1)^k \frac{x^{2k+1}}{(2k+1)!}\) \\
+\hline 
+\(\displaystyle \cos x\) & \(\displaystyle 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + \dots = \sum_{k=0}^N (-1)^k \frac{x^{2k}}{(2k)!}\) \\
+\hline 
+\(\displaystyle \frac{1}{1-x}\) & \(\displaystyle 1 + x + x^2 + \dots = \sum_{k=0}^N x^k\) \\
+\hline 
+\(\displaystyle \arcsin x\) & \(\displaystyle x + \frac{x^3}{6} + \frac{3x^5}{40} + \dots = \sum_{k=0}^N \frac{(-0.5)^{\underline{k}}}{k!}(-1)^k \frac{x^{2k+1}}{2k+1}\) \\
+\hline 
+\(\displaystyle \arccos x\) & \(\displaystyle \frac{\pi}{2} - x - \frac{x^3}{6} - \frac{3x^5}{40} - \dots = \frac{\pi}{2} - \sum_{k=0}^N \frac{(-0.5)^{\underline{k}}}{k!}(-1)^k \frac{x^{2k+1}}{2k+1}\) \\
+\hline 
+\(\displaystyle \arctan x\) & \(\displaystyle x - \frac{x^3}{3} + \frac{x^5}{5} + \dots = \sum_{k=0}^N (-1)^k \frac{x^{2k+1}}{2k+1}\) \\
+\hline 
+\(\displaystyle (1+x)^\alpha\) & \(\displaystyle 1 + \alpha x + \frac{\alpha (\alpha-1)}{2}x^2 + \dots = \sum_{k=0}^N \frac{\alpha^{\underline{k}}}{k!}x^k,\)
+where \(\displaystyle a^{\underline{b}} = a(a-1)(a-2)\dots(a-b+1) = \prod_{k=0}^{b-1} (a-k)\) \\
+\hline
+\end{tabular}
+\caption{Common Taylor series expansions.}
+\end{table}
+
+\subsection{Lagrange Error Formula}
+
+\[
+E_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}, \quad c \in [\min(x, a), \max(x, a)]
+\]
+
+\printbibliography
+
+\end{document}
